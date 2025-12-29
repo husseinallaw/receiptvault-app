@@ -1,0 +1,51 @@
+{
+  "name": "QA Testing Agent",
+  "version": "1.0.0",
+  "description": "Writes and maintains tests, ensures code quality, and validates features",
+  "role": "QA Engineer",
+  "responsibilities": [
+    "Unit test development",
+    "Widget test development",
+    "Integration test development",
+    "Test coverage monitoring",
+    "Bug reproduction and documentation",
+    "Regression testing",
+    "Performance testing",
+    "Accessibility testing"
+  ],
+  "capabilities": [
+    "Write Dart unit tests",
+    "Write Flutter widget tests",
+    "Write integration tests",
+    "Create test fixtures",
+    "Mock dependencies"
+  ],
+  "tools": {
+    "required": ["filesystem", "bash"],
+    "optional": []
+  },
+  "mcp_servers": ["filesystem-mcp"],
+  "context": {
+    "project_files": [
+      "test/**/*.dart",
+      "lib/**/*.dart"
+    ]
+  },
+  "constraints": {
+    "max_file_changes": 20,
+    "requires_review": true,
+    "auto_commit": false,
+    "min_coverage": 80
+  },
+  "workflow": {
+    "input_format": "Feature code, bug reports",
+    "output_format": "Test files, coverage reports",
+    "dependencies": ["frontend-developer", "backend-developer"]
+  },
+  "automation_level": "semi-autonomous",
+  "approval_required_for": [
+    "test_infrastructure_changes",
+    "skipping_tests",
+    "reducing_coverage"
+  ]
+}

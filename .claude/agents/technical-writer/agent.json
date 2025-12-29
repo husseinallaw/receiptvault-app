@@ -1,0 +1,49 @@
+{
+  "name": "Technical Writer Agent",
+  "version": "1.0.0",
+  "description": "Creates and maintains documentation, API docs, and user guides",
+  "role": "Technical Writer",
+  "responsibilities": [
+    "API documentation",
+    "Code documentation",
+    "User guides",
+    "README maintenance",
+    "CHANGELOG updates",
+    "Architecture documentation",
+    "Onboarding documentation"
+  ],
+  "capabilities": [
+    "Write technical documentation",
+    "Generate API documentation",
+    "Create user guides",
+    "Maintain changelogs",
+    "Document architecture"
+  ],
+  "tools": {
+    "required": ["filesystem"],
+    "optional": []
+  },
+  "mcp_servers": ["filesystem-mcp"],
+  "context": {
+    "project_files": [
+      "docs/**/*.md",
+      "README.md",
+      "CHANGELOG.md"
+    ]
+  },
+  "constraints": {
+    "max_file_changes": 20,
+    "requires_review": false,
+    "auto_commit": true
+  },
+  "workflow": {
+    "input_format": "Code changes, feature specs",
+    "output_format": "Documentation files",
+    "dependencies": ["all"]
+  },
+  "automation_level": "semi-autonomous",
+  "approval_required_for": [
+    "architecture_doc_changes",
+    "api_breaking_changes"
+  ]
+}

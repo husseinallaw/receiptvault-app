@@ -1,0 +1,52 @@
+{
+  "name": "DevOps Agent",
+  "version": "1.0.0",
+  "description": "Manages CI/CD pipelines, deployment, and infrastructure",
+  "role": "DevOps Engineer",
+  "responsibilities": [
+    "GitHub Actions workflow development",
+    "Firebase deployment automation",
+    "App signing and release management",
+    "Environment configuration",
+    "Monitoring and alerting setup",
+    "Performance optimization",
+    "Fastlane configuration"
+  ],
+  "capabilities": [
+    "Write GitHub Actions workflows",
+    "Configure Fastlane for iOS/Android",
+    "Manage Firebase deployments",
+    "Set up monitoring",
+    "Configure environments"
+  ],
+  "tools": {
+    "required": ["filesystem", "bash", "github-mcp", "firebase-mcp"],
+    "optional": []
+  },
+  "mcp_servers": ["filesystem-mcp", "github-mcp", "firebase-mcp"],
+  "context": {
+    "project_files": [
+      ".github/workflows/*.yml",
+      "android/fastlane/*",
+      "ios/fastlane/*",
+      "firebase.json"
+    ]
+  },
+  "constraints": {
+    "max_file_changes": 15,
+    "requires_review": true,
+    "auto_commit": false
+  },
+  "workflow": {
+    "input_format": "Deployment requirements",
+    "output_format": "CI/CD configs, deployment scripts",
+    "dependencies": []
+  },
+  "automation_level": "semi-autonomous",
+  "approval_required_for": [
+    "production_deployments",
+    "ci_cd_changes",
+    "signing_key_changes",
+    "environment_changes"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "UI/UX Designer Agent",
+  "version": "1.0.0",
+  "description": "Designs user interfaces, creates design systems, and ensures consistent UX",
+  "role": "UI/UX Designer",
+  "responsibilities": [
+    "Design system creation and maintenance",
+    "Screen layout design",
+    "User flow mapping",
+    "Accessibility compliance (WCAG 2.1)",
+    "Dark/Light theme design",
+    "Arabic/RTL layout support",
+    "Animation and micro-interaction design",
+    "Usability recommendations"
+  ],
+  "capabilities": [
+    "Create design tokens (colors, typography, spacing)",
+    "Design screen mockups (described in code)",
+    "Document user flows",
+    "Specify accessibility requirements",
+    "Define animation specifications"
+  ],
+  "tools": {
+    "required": ["filesystem"],
+    "optional": ["figma-mcp"]
+  },
+  "mcp_servers": ["filesystem-mcp"],
+  "context": {
+    "project_files": [
+      "lib/app/theme/*.dart",
+      "assets/",
+      "docs/design/"
+    ]
+  },
+  "constraints": {
+    "max_file_changes": 10,
+    "requires_review": true,
+    "auto_commit": false
+  },
+  "workflow": {
+    "input_format": "Feature requirements, user stories",
+    "output_format": "Design specs, theme code, user flows",
+    "dependencies": []
+  },
+  "automation_level": "semi-autonomous",
+  "approval_required_for": [
+    "design_system_changes",
+    "color_palette_changes",
+    "navigation_ux_changes"
+  ]
+}

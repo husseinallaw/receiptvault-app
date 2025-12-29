@@ -1,0 +1,128 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+
+    function isPremium() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.subscriptionTier in ['premium', 'business'];
+    }
+
+    function isValidReceipt() {
+      return request.resource.data.keys().hasAll(['userId', 'storeName', 'date', 'status'])
+        && request.resource.data.userId == request.auth.uid;
+    }
+
+    function isValidBudget() {
+      return request.resource.data.keys().hasAll(['userId', 'name', 'amount', 'currency'])
+        && request.resource.data.userId == request.auth.uid;
+    }
+
+    // Users collection
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      allow create: if isOwner(userId);
+      allow update: if isOwner(userId);
+      allow delete: if false; // Users cannot delete their accounts directly
+
+      // User preferences subcollection
+      match /preferences/{docId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      // User subscriptions subcollection
+      match /subscriptions/{subId} {
+        allow read: if isOwner(userId);
+        allow write: if false; // Only Cloud Functions can write
+      }
+
+      // User devices subcollection
+      match /devices/{deviceId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+
+    // Receipts collection
+    match /receipts/{receiptId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated() && isValidReceipt();
+      allow update: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow delete: if isAuthenticated() && resource.data.userId == request.auth.uid;
+
+      // Receipt items subcollection
+      match /items/{itemId} {
+        allow read, write: if isAuthenticated()
+          && get(/databases/$(database)/documents/receipts/$(receiptId)).data.userId == request.auth.uid;
+      }
+
+      // Receipt images subcollection
+      match /images/{imageId} {
+        allow read, write: if isAuthenticated()
+          && get(/databases/$(database)/documents/receipts/$(receiptId)).data.userId == request.auth.uid;
+      }
+    }
+
+    // Budgets collection
+    match /budgets/{budgetId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated() && isValidBudget();
+      allow update: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow delete: if isAuthenticated() && resource.data.userId == request.auth.uid;
+    }
+
+    // Stores collection (public read, admin write)
+    match /stores/{storeId} {
+      allow read: if isAuthenticated();
+      allow write: if false; // Admin only via Cloud Functions
+    }
+
+    // Products collection (public read)
+    match /products/{productId} {
+      allow read: if isAuthenticated();
+      allow write: if false; // Cloud Functions only
+
+      // Product prices subcollection
+      match /prices/{priceId} {
+        allow read: if isAuthenticated();
+        allow create: if isAuthenticated(); // Users can report prices
+        allow update, delete: if false;
+      }
+    }
+
+    // Exchange rates collection (public read)
+    match /exchange_rates/{rateId} {
+      allow read: if isAuthenticated();
+      allow write: if false; // Cloud Functions only
+    }
+
+    // Categories collection (public read)
+    match /categories/{categoryId} {
+      allow read: if isAuthenticated();
+      allow write: if false; // Admin only
+    }
+
+    // Price index collection (premium feature)
+    match /price_index/{productId} {
+      allow read: if isAuthenticated() && isPremium();
+      allow write: if false; // Cloud Functions only
+
+      match /store_prices/{storeId} {
+        allow read: if isAuthenticated() && isPremium();
+        allow write: if false;
+      }
+    }
+
+    // Analytics aggregates (public read for own data)
+    match /analytics/aggregates/{period} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+  }
+}

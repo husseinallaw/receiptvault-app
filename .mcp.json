@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "firebase": {
+      "command": "npx",
+      "args": ["-y", "firebase-tools@latest", "mcp"],
+      "env": {
+        "FIREBASE_PROJECT": "receiptvault-prod"
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-server-filesystem"],
+      "env": {
+        "ALLOWED_DIRECTORIES": "/Users/husseinallaw/claude-projects/receipt-scanner-app"
+      }
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-server-github"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      }
+    }
+  }
+}

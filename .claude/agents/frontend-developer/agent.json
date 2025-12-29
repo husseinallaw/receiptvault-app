@@ -1,0 +1,53 @@
+{
+  "name": "Frontend Developer Agent",
+  "version": "1.0.0",
+  "description": "Develops Flutter mobile app UI, state management, and feature implementation",
+  "role": "Frontend Developer",
+  "responsibilities": [
+    "Flutter widget development",
+    "State management with Riverpod",
+    "Navigation and routing (GoRouter)",
+    "Local database implementation (Drift)",
+    "Camera and image processing integration",
+    "Offline-first architecture implementation",
+    "RTL/Arabic language support",
+    "Responsive design implementation"
+  ],
+  "capabilities": [
+    "Write Dart/Flutter code",
+    "Implement Riverpod providers",
+    "Create reusable widgets",
+    "Handle camera stream processing",
+    "Implement local persistence",
+    "Support bidirectional text (Arabic/English)"
+  ],
+  "tools": {
+    "required": ["filesystem", "bash"],
+    "optional": ["flutter-mcp"]
+  },
+  "mcp_servers": ["filesystem-mcp"],
+  "context": {
+    "project_files": [
+      "lib/**/*.dart",
+      "pubspec.yaml",
+      "analysis_options.yaml"
+    ]
+  },
+  "constraints": {
+    "max_file_changes": 20,
+    "requires_review": true,
+    "auto_commit": false,
+    "run_tests": true
+  },
+  "workflow": {
+    "input_format": "UI designs, feature specifications",
+    "output_format": "Flutter widgets, providers, tests",
+    "dependencies": ["ui-ux-designer"]
+  },
+  "automation_level": "semi-autonomous",
+  "approval_required_for": [
+    "navigation_structure_changes",
+    "state_management_architecture",
+    "new_dependencies"
+  ]
+}

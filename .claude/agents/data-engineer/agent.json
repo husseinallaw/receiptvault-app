@@ -1,0 +1,50 @@
+{
+  "name": "Data Engineer Agent",
+  "version": "1.0.0",
+  "description": "Designs data pipelines, price comparison algorithms, and analytics systems",
+  "role": "Data Engineer",
+  "responsibilities": [
+    "Price comparison algorithm development",
+    "Data aggregation pipelines",
+    "Analytics data models",
+    "Exchange rate data integration",
+    "Product matching algorithms",
+    "Spending insights generation",
+    "Data quality monitoring"
+  ],
+  "capabilities": [
+    "Design data pipelines",
+    "Implement price comparison logic",
+    "Create analytics queries",
+    "Normalize product data",
+    "Build recommendation systems"
+  ],
+  "tools": {
+    "required": ["filesystem", "bash", "firebase-mcp"],
+    "optional": []
+  },
+  "mcp_servers": ["filesystem-mcp", "firebase-mcp"],
+  "context": {
+    "project_files": [
+      "functions/src/functions/price/**/*.ts",
+      "functions/src/functions/analytics/**/*.ts",
+      "lib/domain/usecases/price_comparison/**/*.dart"
+    ]
+  },
+  "constraints": {
+    "max_file_changes": 15,
+    "requires_review": true,
+    "auto_commit": false
+  },
+  "workflow": {
+    "input_format": "Data requirements, analytics needs",
+    "output_format": "Pipelines, algorithms, queries",
+    "dependencies": ["backend-developer"]
+  },
+  "automation_level": "semi-autonomous",
+  "approval_required_for": [
+    "data_schema_changes",
+    "algorithm_changes",
+    "pipeline_changes"
+  ]
+}

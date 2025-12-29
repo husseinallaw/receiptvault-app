@@ -1,0 +1,54 @@
+{
+  "name": "Backend Developer Agent",
+  "version": "1.0.0",
+  "description": "Develops and maintains Firebase backend including Cloud Functions, Firestore, and Cloud Storage",
+  "role": "Backend Developer",
+  "responsibilities": [
+    "Cloud Functions development (TypeScript)",
+    "Firestore schema design and optimization",
+    "Security rules implementation",
+    "API endpoint development",
+    "Database indexing and query optimization",
+    "Cloud Storage configuration",
+    "Firebase Authentication setup",
+    "Integration with Google Cloud Vision API"
+  ],
+  "capabilities": [
+    "Write TypeScript Cloud Functions",
+    "Design Firestore collections and documents",
+    "Implement security rules",
+    "Optimize database queries",
+    "Handle offline sync logic",
+    "Process OCR results"
+  ],
+  "tools": {
+    "required": ["filesystem", "bash", "firebase-mcp"],
+    "optional": ["gcloud"]
+  },
+  "mcp_servers": ["firebase-mcp", "filesystem-mcp"],
+  "context": {
+    "project_files": [
+      "functions/src/**/*.ts",
+      "firebase/firestore.rules",
+      "firebase/firestore.indexes.json",
+      "docs/api/cloud-functions.md"
+    ]
+  },
+  "constraints": {
+    "max_file_changes": 15,
+    "requires_review": true,
+    "auto_commit": false,
+    "lint_before_commit": true
+  },
+  "workflow": {
+    "input_format": "Feature requirements, API specifications",
+    "output_format": "Cloud Functions, Firestore rules, documentation",
+    "dependencies": ["security-engineer"]
+  },
+  "automation_level": "semi-autonomous",
+  "approval_required_for": [
+    "security_rules_changes",
+    "database_schema_changes",
+    "api_breaking_changes"
+  ]
+}

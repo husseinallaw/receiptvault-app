@@ -1,0 +1,107 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VS Code
+.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+*.g.dart
+*.freezed.dart
+*.gr.dart
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+/android/app/google-services.json
+/android/key.properties
+/android/app/keystore.jks
+/android/*.keystore
+
+# iOS
+/ios/Runner/GoogleService-Info.plist
+/ios/Runner/firebase_app_id_file.json
+*.xcuserstate
+*.xcworkspacedata
+
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+pubsub-debug.log
+.firebaserc
+
+# Cloud Functions
+functions/lib/
+functions/node_modules/
+
+# Environment files
+.env
+.env.*
+*.env
+
+# Secrets
+**/secrets/
+*.pem
+*.p12
+*.p8
+
+# Generated files
+*.mocks.dart
+*.config.dart
+lib/firebase_options.dart
+
+# Coverage
+coverage/
+lcov.info
+
+# Test
+test/.test_coverage.dart
+
+# Local configuration
+.mcp.json.local
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# IDE specific
+*.sublime-project
+*.sublime-workspace

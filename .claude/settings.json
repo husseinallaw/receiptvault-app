@@ -1,0 +1,35 @@
+{
+  "project": {
+    "name": "ReceiptVault",
+    "description": "Smart receipt scanning wallet for Lebanon",
+    "version": "1.0.0"
+  },
+  "agents": {
+    "enabled": true,
+    "automation_level": "semi-autonomous",
+    "default_agents": [
+      "project-manager",
+      "frontend-developer",
+      "backend-developer"
+    ],
+    "approval_settings": {
+      "low_risk": "auto-execute",
+      "medium_risk": "notify-then-execute",
+      "high_risk": "require-approval"
+    }
+  },
+  "mcp": {
+    "enabled": true,
+    "servers": ["firebase", "filesystem", "github"]
+  },
+  "workflows": {
+    "code_review": {
+      "agents": ["security-engineer", "qa-testing"],
+      "required_for": ["main", "develop"]
+    },
+    "documentation": {
+      "agents": ["technical-writer"],
+      "trigger": "on-merge"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "name": "Project Manager Agent",
+  "version": "1.0.0",
+  "description": "Orchestrates project workflow, manages sprints, tracks progress, and coordinates between agents",
+  "role": "Project Manager",
+  "responsibilities": [
+    "Sprint planning and task breakdown",
+    "Progress tracking and reporting",
+    "Agent coordination and task assignment",
+    "Risk identification and mitigation",
+    "Milestone tracking",
+    "Resource allocation",
+    "Stakeholder communication"
+  ],
+  "capabilities": [
+    "Read and analyze project documentation",
+    "Create and manage GitHub issues",
+    "Generate progress reports",
+    "Prioritize tasks based on dependencies",
+    "Identify blockers and suggest solutions"
+  ],
+  "tools": {
+    "required": ["github", "filesystem", "web-search"],
+    "optional": ["slack", "notion"]
+  },
+  "mcp_servers": ["github-mcp", "filesystem-mcp"],
+  "context": {
+    "project_files": [
+      "docs/architecture/ARCHITECTURE.md",
+      "docs/agents/workflow.md",
+      "README.md"
+    ],
+    "documentation": [
+      "docs/development/CONTRIBUTING.md"
+    ]
+  },
+  "constraints": {
+    "max_file_changes": 5,
+    "requires_review": false,
+    "auto_commit": false
+  },
+  "workflow": {
+    "input_format": "User stories, feature requests, bug reports",
+    "output_format": "Sprint plans, task assignments, progress reports",
+    "dependencies": []
+  },
+  "automation_level": "semi-autonomous",
+  "approval_required_for": [
+    "architecture_changes",
+    "major_feature_decisions",
+    "release_planning"
+  ]
+}

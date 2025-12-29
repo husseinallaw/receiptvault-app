@@ -1,0 +1,51 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+
+    function isValidImage() {
+      return request.resource.contentType.matches('image/.*')
+        && request.resource.size < 10 * 1024 * 1024; // 10MB max
+    }
+
+    // User receipt images
+    match /users/{userId}/receipts/{receiptId}/{allPaths=**} {
+      allow read: if isOwner(userId);
+      allow create: if isOwner(userId) && isValidImage();
+      allow update: if false; // Receipts are immutable once uploaded
+      allow delete: if isOwner(userId);
+    }
+
+    // User profile images
+    match /users/{userId}/profile/{fileName} {
+      allow read: if isAuthenticated(); // Profile images are semi-public
+      allow create, update: if isOwner(userId) && isValidImage();
+      allow delete: if isOwner(userId);
+    }
+
+    // Store logos (public read, admin write)
+    match /stores/logos/{storeId} {
+      allow read: if isAuthenticated();
+      allow write: if false; // Admin only
+    }
+
+    // Product images (public read)
+    match /products/images/{productId} {
+      allow read: if isAuthenticated();
+      allow write: if false; // Admin only
+    }
+
+    // Temporary OCR processing folder
+    match /temp/ocr_processing/{jobId}/{fileName} {
+      allow read, write: if isAuthenticated();
+    }
+  }
+}

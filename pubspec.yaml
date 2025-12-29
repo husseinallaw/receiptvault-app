@@ -1,0 +1,125 @@
+name: receipt_vault
+description: "Smart receipt scanning wallet for Lebanon - LBP/USD dual currency support"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.4
+  flutter: ">=3.19.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # UI Components
+  cupertino_icons: ^1.0.8
+  flutter_svg: ^2.0.10
+  cached_network_image: ^3.3.1
+  shimmer: ^3.0.0
+  lottie: ^3.1.0
+  fl_chart: ^0.67.0
+
+  # State Management
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
+
+  # Navigation
+  go_router: ^14.0.0
+
+  # Firebase
+  firebase_core: ^2.27.0
+  firebase_auth: ^4.17.0
+  cloud_firestore: ^4.15.0
+  firebase_storage: ^11.6.0
+  firebase_messaging: ^14.7.0
+  firebase_analytics: ^10.8.0
+  firebase_crashlytics: ^3.4.0
+
+  # Local Database
+  drift: ^2.15.0
+  sqlite3_flutter_libs: ^0.5.20
+
+  # Networking
+  dio: ^5.4.1
+  connectivity_plus: ^6.0.0
+
+  # Camera & Images
+  camera: ^0.10.5+9
+  image_picker: ^1.0.7
+  image: ^4.1.7
+
+  # In-App Purchases
+  purchases_flutter: ^6.25.0
+
+  # Utilities
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
+  intl: ^0.19.0
+  uuid: ^4.3.3
+  path_provider: ^2.1.2
+  share_plus: ^8.0.2
+  url_launcher: ^6.2.5
+  collection: ^1.18.0
+
+  # Security
+  flutter_secure_storage: ^9.0.0
+  local_auth: ^2.1.8
+
+  # Permissions
+  permission_handler: ^11.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Linting
+  flutter_lints: ^6.0.0
+
+  # Code Generation
+  build_runner: ^2.4.8
+  riverpod_generator: ^2.4.0
+  freezed: ^2.4.7
+  json_serializable: ^6.7.1
+  drift_dev: ^2.15.0
+
+  # Testing
+  mockito: ^5.4.4
+  mocktail: ^1.0.3
+
+  # App Icons & Splash
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.3.10
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/images/
+    - assets/images/logo/
+    - assets/images/onboarding/
+    - assets/images/illustrations/
+    - assets/icons/
+    - assets/icons/stores/
+    - assets/icons/categories/
+    - assets/animations/
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/inter/Inter-Regular.ttf
+        - asset: assets/fonts/inter/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/inter/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/inter/Inter-Bold.ttf
+          weight: 700
+    - family: Tajawal
+      fonts:
+        - asset: assets/fonts/tajawal/Tajawal-Regular.ttf
+        - asset: assets/fonts/tajawal/Tajawal-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/tajawal/Tajawal-Bold.ttf
+          weight: 700
