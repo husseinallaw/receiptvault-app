@@ -4,8 +4,8 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.3.0 <4.0.0"
-  flutter: ">=3.19.0"
+  sdk: ">=3.5.0 <4.0.0"
+  flutter: ">=3.24.0"
 
 dependencies:
   flutter:
@@ -56,7 +56,7 @@ dependencies:
   # Utilities
   freezed_annotation: ^2.4.1
   json_annotation: ^4.8.1
-  intl: any  # Version determined by flutter_localizations SDK
+  intl: any
   uuid: ^4.3.3
   path_provider: ^2.1.2
   share_plus: ^8.0.2
@@ -75,7 +75,7 @@ dev_dependencies:
     sdk: flutter
 
   # Linting
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
 
   # Code Generation
   build_runner: ^2.4.8
