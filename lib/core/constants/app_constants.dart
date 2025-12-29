@@ -75,7 +75,8 @@ abstract class AppConstants {
   static const String collectionPriceIndex = 'price_index';
 
   // Cloud Storage paths
-  static const String storageReceiptsPath = 'users/{userId}/receipts/{receiptId}';
+  static const String storageReceiptsPath =
+      'users/{userId}/receipts/{receiptId}';
   static const String storageProfilePath = 'users/{userId}/profile';
 }
 

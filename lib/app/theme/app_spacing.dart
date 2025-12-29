@@ -18,25 +18,42 @@ abstract class AppSpacing {
   static const EdgeInsets paddingXl = EdgeInsets.all(xl);
 
   // Horizontal padding
-  static const EdgeInsets paddingHorizontalSm = EdgeInsets.symmetric(horizontal: sm);
-  static const EdgeInsets paddingHorizontalMd = EdgeInsets.symmetric(horizontal: md);
-  static const EdgeInsets paddingHorizontalLg = EdgeInsets.symmetric(horizontal: lg);
+  static const EdgeInsets paddingHorizontalSm = EdgeInsets.symmetric(
+    horizontal: sm,
+  );
+  static const EdgeInsets paddingHorizontalMd = EdgeInsets.symmetric(
+    horizontal: md,
+  );
+  static const EdgeInsets paddingHorizontalLg = EdgeInsets.symmetric(
+    horizontal: lg,
+  );
 
   // Vertical padding
-  static const EdgeInsets paddingVerticalSm = EdgeInsets.symmetric(vertical: sm);
-  static const EdgeInsets paddingVerticalMd = EdgeInsets.symmetric(vertical: md);
-  static const EdgeInsets paddingVerticalLg = EdgeInsets.symmetric(vertical: lg);
+  static const EdgeInsets paddingVerticalSm = EdgeInsets.symmetric(
+    vertical: sm,
+  );
+  static const EdgeInsets paddingVerticalMd = EdgeInsets.symmetric(
+    vertical: md,
+  );
+  static const EdgeInsets paddingVerticalLg = EdgeInsets.symmetric(
+    vertical: lg,
+  );
 
   // Screen padding (standard content padding)
   static const EdgeInsets screenPadding = EdgeInsets.all(md);
-  static const EdgeInsets screenPaddingHorizontal = EdgeInsets.symmetric(horizontal: md);
+  static const EdgeInsets screenPaddingHorizontal = EdgeInsets.symmetric(
+    horizontal: md,
+  );
 
   // Card padding
   static const EdgeInsets cardPadding = EdgeInsets.all(md);
   static const EdgeInsets cardPaddingCompact = EdgeInsets.all(sm);
 
   // List item padding
-  static const EdgeInsets listItemPadding = EdgeInsets.symmetric(horizontal: md, vertical: sm);
+  static const EdgeInsets listItemPadding = EdgeInsets.symmetric(
+    horizontal: md,
+    vertical: sm,
+  );
 
   // Gap widgets for Row/Column
   static const SizedBox gapXs = SizedBox(width: xs, height: xs);

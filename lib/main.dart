@@ -10,11 +10,7 @@ void main() {
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
 
-  runApp(
-    const ProviderScope(
-      child: ReceiptVaultApp(),
-    ),
-  );
+  runApp(const ProviderScope(child: ReceiptVaultApp()));
 }
 
 /// Main application widget for ReceiptVault
@@ -48,10 +44,7 @@ class HomeScreen extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ReceiptVault'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text('ReceiptVault'), centerTitle: true),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -62,15 +55,12 @@ class HomeScreen extends StatelessWidget {
               color: theme.colorScheme.primary,
             ),
             const SizedBox(height: 24),
-            Text(
-              'ReceiptVault',
-              style: theme.textTheme.headlineMedium,
-            ),
+            Text('ReceiptVault', style: theme.textTheme.headlineMedium),
             const SizedBox(height: 8),
             Text(
               'Smart Receipt Scanning for Lebanon',
               style: theme.textTheme.bodyLarge?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.7),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
             const SizedBox(height: 48),
@@ -136,24 +126,15 @@ class _FeatureRow extends StatelessWidget {
             color: theme.colorScheme.primaryContainer,
             borderRadius: BorderRadius.circular(12),
           ),
-          child: Icon(
-            icon,
-            color: theme.colorScheme.primary,
-          ),
+          child: Icon(icon, color: theme.colorScheme.primary),
         ),
         const SizedBox(width: 16),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                title,
-                style: theme.textTheme.titleMedium,
-              ),
-              Text(
-                subtitle,
-                style: theme.textTheme.bodySmall,
-              ),
+              Text(title, style: theme.textTheme.titleMedium),
+              Text(subtitle, style: theme.textTheme.bodySmall),
             ],
           ),
         ),

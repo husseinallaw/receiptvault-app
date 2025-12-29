@@ -105,3 +105,4 @@ temp/
 # IDE specific
 *.sublime-project
 *.sublime-workspace
+functions/build/
