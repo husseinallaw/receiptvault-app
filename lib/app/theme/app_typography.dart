@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 /// Typography configuration for ReceiptVault
-/// Uses Inter for English and Tajawal for Arabic
+/// TODO: Add custom fonts (Inter for English, Tajawal for Arabic)
 class AppTypography {
-  static const String fontFamilyEnglish = 'Inter';
-  static const String fontFamilyArabic = 'Tajawal';
+  // Using system fonts until custom fonts are added
+  static const String? fontFamilyEnglish = null;
+  static const String? fontFamilyArabic = null;
 
   static TextTheme get textTheme => const TextTheme(
         // Display styles

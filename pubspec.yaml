@@ -106,20 +106,20 @@ flutter:
     - assets/icons/categories/
     - assets/animations/
 
-  fonts:
-    - family: Inter
-      fonts:
-        - asset: assets/fonts/inter/Inter-Regular.ttf
-        - asset: assets/fonts/inter/Inter-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/inter/Inter-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/inter/Inter-Bold.ttf
-          weight: 700
-    - family: Tajawal
-      fonts:
-        - asset: assets/fonts/tajawal/Tajawal-Regular.ttf
-        - asset: assets/fonts/tajawal/Tajawal-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/tajawal/Tajawal-Bold.ttf
-          weight: 700
+  # fonts:
+  #   - family: Inter
+  #     fonts:
+  #       - asset: assets/fonts/inter/Inter-Regular.ttf
+  #       - asset: assets/fonts/inter/Inter-Medium.ttf
+  #         weight: 500
+  #       - asset: assets/fonts/inter/Inter-SemiBold.ttf
+  #         weight: 600
+  #       - asset: assets/fonts/inter/Inter-Bold.ttf
+  #         weight: 700
+  #   - family: Tajawal
+  #     fonts:
+  #       - asset: assets/fonts/tajawal/Tajawal-Regular.ttf
+  #       - asset: assets/fonts/tajawal/Tajawal-Medium.ttf
+  #         weight: 500
+  #       - asset: assets/fonts/tajawal/Tajawal-Bold.ttf
+  #         weight: 700
