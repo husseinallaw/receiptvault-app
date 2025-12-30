@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -7,8 +8,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'app/router/app_router.dart';
 import 'app/theme/app_theme.dart';
 import 'core/di/injection.dart';
+import 'firebase_options.dart';
 import 'l10n/generated/app_localizations.dart';
-// import 'firebase_options.dart'; // TODO: Generate with FlutterFire CLI
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,10 +23,10 @@ void main() async {
   // Initialize SharedPreferences
   final sharedPreferences = await SharedPreferences.getInstance();
 
-  // TODO: Initialize Firebase when firebase_options.dart is generated
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+  // Initialize Firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(
     ProviderScope(

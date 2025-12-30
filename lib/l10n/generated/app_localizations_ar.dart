@@ -267,32 +267,132 @@ class AppLocalizationsAr extends AppLocalizations {
   String get settingsDeleteAccount => 'حذف الحساب';
 
   @override
-  String get authSignIn => 'تسجيل الدخول';
+  String get appTitle => 'ReceiptVault';
 
   @override
-  String get authSignUp => 'إنشاء حساب';
+  String get signIn => 'Sign In';
 
   @override
-  String get authEmail => 'البريد الإلكتروني';
+  String get signUp => 'Sign Up';
 
   @override
-  String get authPassword => 'كلمة المرور';
+  String get email => 'Email';
 
   @override
-  String get authForgotPassword => 'نسيت كلمة المرور؟';
+  String get password => 'Password';
 
   @override
-  String get authContinueWith => 'أو تابع بواسطة';
+  String get confirmPassword => 'Confirm Password';
 
   @override
-  String get authGoogle => 'المتابعة مع جوجل';
+  String get displayName => 'Display Name';
 
   @override
-  String get authApple => 'المتابعة مع آبل';
+  String get enterEmail => 'Enter your email';
 
   @override
-  String get authTerms =>
-      'بالمتابعة، أنت توافق على شروط الخدمة وسياسة الخصوصية';
+  String get enterPassword => 'Enter your password';
+
+  @override
+  String get enterConfirmPassword => 'Confirm your password';
+
+  @override
+  String get enterDisplayName => 'Enter your name';
+
+  @override
+  String get forgotPassword => 'Forgot Password?';
+
+  @override
+  String get resetPassword => 'Reset Password';
+
+  @override
+  String get resetPasswordDescription =>
+      'Enter your email and we\'ll send you a link to reset your password.';
+
+  @override
+  String get passwordResetEmailSent => 'Password reset email sent';
+
+  @override
+  String get send => 'Send';
+
+  @override
+  String get or => 'or';
+
+  @override
+  String get welcomeBack => 'Welcome back!';
+
+  @override
+  String get createAccount => 'Create your account';
+
+  @override
+  String get alreadyHaveAccount => 'Already have an account?';
+
+  @override
+  String get dontHaveAccount => 'Don\'t have an account?';
+
+  @override
+  String get emailRequired => 'Email is required';
+
+  @override
+  String get passwordRequired => 'Password is required';
+
+  @override
+  String get confirmPasswordRequired => 'Please confirm your password';
+
+  @override
+  String get invalidEmail => 'Please enter a valid email';
+
+  @override
+  String get passwordTooShort => 'Password must be at least 6 characters';
+
+  @override
+  String get passwordsDoNotMatch => 'Passwords do not match';
+
+  @override
+  String get back => 'Back';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get welcomeToReceiptVault => 'Welcome to ReceiptVault';
+
+  @override
+  String get onboardingWelcomeDescription =>
+      'Your smart receipt scanning wallet for Lebanon. Track spending in LBP and USD.';
+
+  @override
+  String get featureScanReceipts => 'Scan and organize your receipts';
+
+  @override
+  String get featureMultiCurrency => 'Track in LBP and USD simultaneously';
+
+  @override
+  String get featureTrackSpending => 'Monitor spending with smart analytics';
+
+  @override
+  String get selectLanguage => 'Select Language';
+
+  @override
+  String get selectLanguageDescription =>
+      'Choose your preferred language. You can change this later in settings.';
+
+  @override
+  String get selectCurrencies => 'Set Your Currencies';
+
+  @override
+  String get selectCurrenciesDescription =>
+      'Lebanon uses both LBP and USD. Set your primary and secondary currencies.';
+
+  @override
+  String get primaryCurrency => 'Primary Currency';
+
+  @override
+  String get secondaryCurrency => 'Secondary Currency';
+
+  @override
+  String get currencyChangeableInSettings =>
+      'You can change your currency preferences anytime in Settings.';
 
   @override
   String get onboardingTitle1 => 'مسح الإيصالات';

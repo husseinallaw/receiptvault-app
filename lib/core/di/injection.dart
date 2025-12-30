@@ -37,33 +37,9 @@ final sharedPreferencesProvider = Provider<SharedPreferences>((ref) {
   );
 });
 
-// ==================== Auth State ====================
-
-/// Current Firebase user stream
-final authStateChangesProvider = StreamProvider<User?>((ref) {
-  final auth = ref.watch(firebaseAuthProvider);
-  return auth.authStateChanges();
-});
-
-/// Current user (nullable)
-final currentUserProvider = Provider<User?>((ref) {
-  return ref.watch(authStateChangesProvider).valueOrNull;
-});
-
-/// Check if user is authenticated
-final isAuthenticatedProvider = Provider<bool>((ref) {
-  return ref.watch(currentUserProvider) != null;
-});
-
-/// Current user ID (nullable)
-final currentUserIdProvider = Provider<String?>((ref) {
-  return ref.watch(currentUserProvider)?.uid;
-});
-
 // ==================== App State ====================
-
-/// App initialization state
-final appInitializedProvider = StateProvider<bool>((ref) => false);
+// Note: Auth state providers are now in auth_provider.dart
+// isAuthenticatedProvider and appInitializedProvider are in app_router.dart
 
 /// App theme mode
 final themeModeProvider = StateProvider<ThemeModePreference>((ref) {

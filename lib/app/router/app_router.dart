@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/di/injection.dart';
+import '../../presentation/providers/auth_provider.dart';
+import '../../presentation/screens/auth/auth_screen.dart';
+import '../../presentation/screens/onboarding/onboarding_screen.dart';
 import '../../presentation/screens/shell/shell_screen.dart';
+import '../../presentation/screens/splash/splash_screen.dart';
 import 'routes.dart';
 
 // Placeholder screens - will be replaced with actual implementations
@@ -19,6 +22,15 @@ class _PlaceholderScreen extends StatelessWidget {
     );
   }
 }
+
+/// Provider for app initialization state
+final appInitializedProvider = StateProvider<bool>((ref) => true);
+
+/// Provider for authentication state (derived from authProvider)
+final isAuthenticatedProvider = Provider<bool>((ref) {
+  final authState = ref.watch(authProvider);
+  return authState.isAuthenticated;
+});
 
 /// GoRouter configuration provider
 final routerProvider = Provider<GoRouter>((ref) {
@@ -60,17 +72,17 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppRoutes.splash,
         name: RouteNames.splash,
-        builder: (context, state) => const _PlaceholderScreen('Splash'),
+        builder: (context, state) => const SplashScreen(),
       ),
       GoRoute(
         path: AppRoutes.onboarding,
         name: RouteNames.onboarding,
-        builder: (context, state) => const _PlaceholderScreen('Onboarding'),
+        builder: (context, state) => const OnboardingScreen(),
       ),
       GoRoute(
         path: AppRoutes.auth,
         name: RouteNames.auth,
-        builder: (context, state) => const _PlaceholderScreen('Auth'),
+        builder: (context, state) => const AuthScreen(),
       ),
 
       // ==================== Main App (Shell Route) ====================

@@ -602,59 +602,251 @@ abstract class AppLocalizations {
   /// **'Delete Account'**
   String get settingsDeleteAccount;
 
-  /// No description provided for @authSignIn.
+  /// No description provided for @appTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'ReceiptVault'**
+  String get appTitle;
+
+  /// No description provided for @signIn.
   ///
   /// In en, this message translates to:
   /// **'Sign In'**
-  String get authSignIn;
+  String get signIn;
 
-  /// No description provided for @authSignUp.
+  /// No description provided for @signUp.
   ///
   /// In en, this message translates to:
   /// **'Sign Up'**
-  String get authSignUp;
+  String get signUp;
 
-  /// No description provided for @authEmail.
+  /// No description provided for @email.
   ///
   /// In en, this message translates to:
   /// **'Email'**
-  String get authEmail;
+  String get email;
 
-  /// No description provided for @authPassword.
+  /// No description provided for @password.
   ///
   /// In en, this message translates to:
   /// **'Password'**
-  String get authPassword;
+  String get password;
 
-  /// No description provided for @authForgotPassword.
+  /// No description provided for @confirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPassword;
+
+  /// No description provided for @displayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Display Name'**
+  String get displayName;
+
+  /// No description provided for @enterEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email'**
+  String get enterEmail;
+
+  /// No description provided for @enterPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your password'**
+  String get enterPassword;
+
+  /// No description provided for @enterConfirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your password'**
+  String get enterConfirmPassword;
+
+  /// No description provided for @enterDisplayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your name'**
+  String get enterDisplayName;
+
+  /// No description provided for @forgotPassword.
   ///
   /// In en, this message translates to:
   /// **'Forgot Password?'**
-  String get authForgotPassword;
+  String get forgotPassword;
 
-  /// No description provided for @authContinueWith.
+  /// No description provided for @resetPassword.
   ///
   /// In en, this message translates to:
-  /// **'Or continue with'**
-  String get authContinueWith;
+  /// **'Reset Password'**
+  String get resetPassword;
 
-  /// No description provided for @authGoogle.
+  /// No description provided for @resetPasswordDescription.
   ///
   /// In en, this message translates to:
-  /// **'Continue with Google'**
-  String get authGoogle;
+  /// **'Enter your email and we\'ll send you a link to reset your password.'**
+  String get resetPasswordDescription;
 
-  /// No description provided for @authApple.
+  /// No description provided for @passwordResetEmailSent.
   ///
   /// In en, this message translates to:
-  /// **'Continue with Apple'**
-  String get authApple;
+  /// **'Password reset email sent'**
+  String get passwordResetEmailSent;
 
-  /// No description provided for @authTerms.
+  /// No description provided for @send.
   ///
   /// In en, this message translates to:
-  /// **'By continuing, you agree to our Terms of Service and Privacy Policy'**
-  String get authTerms;
+  /// **'Send'**
+  String get send;
+
+  /// No description provided for @or.
+  ///
+  /// In en, this message translates to:
+  /// **'or'**
+  String get or;
+
+  /// No description provided for @welcomeBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome back!'**
+  String get welcomeBack;
+
+  /// No description provided for @createAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create your account'**
+  String get createAccount;
+
+  /// No description provided for @alreadyHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account?'**
+  String get alreadyHaveAccount;
+
+  /// No description provided for @dontHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account?'**
+  String get dontHaveAccount;
+
+  /// No description provided for @emailRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is required'**
+  String get emailRequired;
+
+  /// No description provided for @passwordRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required'**
+  String get passwordRequired;
+
+  /// No description provided for @confirmPasswordRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please confirm your password'**
+  String get confirmPasswordRequired;
+
+  /// No description provided for @invalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email'**
+  String get invalidEmail;
+
+  /// No description provided for @passwordTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters'**
+  String get passwordTooShort;
+
+  /// No description provided for @passwordsDoNotMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwordsDoNotMatch;
+
+  /// No description provided for @back.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get back;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @welcomeToReceiptVault.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to ReceiptVault'**
+  String get welcomeToReceiptVault;
+
+  /// No description provided for @onboardingWelcomeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Your smart receipt scanning wallet for Lebanon. Track spending in LBP and USD.'**
+  String get onboardingWelcomeDescription;
+
+  /// No description provided for @featureScanReceipts.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan and organize your receipts'**
+  String get featureScanReceipts;
+
+  /// No description provided for @featureMultiCurrency.
+  ///
+  /// In en, this message translates to:
+  /// **'Track in LBP and USD simultaneously'**
+  String get featureMultiCurrency;
+
+  /// No description provided for @featureTrackSpending.
+  ///
+  /// In en, this message translates to:
+  /// **'Monitor spending with smart analytics'**
+  String get featureTrackSpending;
+
+  /// No description provided for @selectLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Language'**
+  String get selectLanguage;
+
+  /// No description provided for @selectLanguageDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your preferred language. You can change this later in settings.'**
+  String get selectLanguageDescription;
+
+  /// No description provided for @selectCurrencies.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Your Currencies'**
+  String get selectCurrencies;
+
+  /// No description provided for @selectCurrenciesDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Lebanon uses both LBP and USD. Set your primary and secondary currencies.'**
+  String get selectCurrenciesDescription;
+
+  /// No description provided for @primaryCurrency.
+  ///
+  /// In en, this message translates to:
+  /// **'Primary Currency'**
+  String get primaryCurrency;
+
+  /// No description provided for @secondaryCurrency.
+  ///
+  /// In en, this message translates to:
+  /// **'Secondary Currency'**
+  String get secondaryCurrency;
+
+  /// No description provided for @currencyChangeableInSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'You can change your currency preferences anytime in Settings.'**
+  String get currencyChangeableInSettings;
 
   /// No description provided for @onboardingTitle1.
   ///

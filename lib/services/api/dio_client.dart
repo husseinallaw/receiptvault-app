@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/constants/app_constants.dart';
-import '../../core/di/injection.dart';
 
 /// Dio HTTP client provider
 final dioProvider = Provider<Dio>((ref) {
@@ -20,7 +20,7 @@ final dioProvider = Provider<Dio>((ref) {
 
   // Add interceptors
   dio.interceptors.addAll([
-    _AuthInterceptor(ref),
+    _AuthInterceptor(),
     _LoggingInterceptor(),
     _ErrorInterceptor(),
   ]);
@@ -30,16 +30,14 @@ final dioProvider = Provider<Dio>((ref) {
 
 /// Auth interceptor - adds Firebase token to requests
 class _AuthInterceptor extends Interceptor {
-  final Ref _ref;
-
-  _AuthInterceptor(this._ref);
+  _AuthInterceptor();
 
   @override
   Future<void> onRequest(
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    final user = _ref.read(currentUserProvider);
+    final user = FirebaseAuth.instance.currentUser;
 
     if (user != null) {
       try {
