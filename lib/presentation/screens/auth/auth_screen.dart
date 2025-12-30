@@ -27,7 +27,8 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
     // Listen for auth state changes
     ref.listen<AuthState>(authProvider, (previous, next) {
       // Only show error if it's a new error (not present in previous state)
-      if (next.hasError && next.errorMessage != null &&
+      if (next.hasError &&
+          next.errorMessage != null &&
           previous?.errorMessage != next.errorMessage) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

@@ -70,8 +70,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '204775861740',
     projectId: 'receiptvault-app',
     storageBucket: 'receiptvault-app.firebasestorage.app',
-    iosClientId: '204775861740-jt19iqv3q684rut1i0t3hva42ce9adh1.apps.googleusercontent.com',
+    iosClientId:
+        '204775861740-jt19iqv3q684rut1i0t3hva42ce9adh1.apps.googleusercontent.com',
     iosBundleId: 'com.receiptvault.receiptVault',
   );
-
 }

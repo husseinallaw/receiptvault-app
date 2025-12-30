@@ -90,33 +90,94 @@ These checks run automatically on every PR:
 
 ---
 
-### Phase 2: Authentication (Template)
+### Phase 2: Authentication ✅ COMPLETE
 
 #### Sprint 2.1: Domain Layer
-- [ ] User entity
-- [ ] Auth repository interface
-- [ ] Use cases (sign in, sign out, get current user)
+- [x] User entity (`lib/domain/entities/user.dart`)
+- [x] UserPreferences entity (`lib/domain/entities/user_preferences.dart`)
+- [x] Auth repository interface (`lib/domain/repositories/auth_repository.dart`)
+- [x] Use cases (sign_in_with_email, sign_in_with_google, sign_in_with_apple, sign_out, get_current_user, send_password_reset, sign_up_with_email)
 
 #### Sprint 2.2: Data Layer
-- [ ] User model with JSON serialization
-- [ ] Firebase Auth data source
-- [ ] Firestore user data source
-- [ ] Repository implementation
+- [x] User model with JSON serialization (`lib/data/models/user_model.dart`)
+- [x] UserPreferences model (`lib/data/models/user_preferences_model.dart`)
+- [x] Firebase Auth data source (`lib/data/datasources/remote/firebase_auth_datasource.dart`)
+- [x] Firestore user data source (`lib/data/datasources/remote/firestore_user_datasource.dart`)
+- [x] Secure storage data source (`lib/data/datasources/local/secure_storage_datasource.dart`)
+- [x] Repository implementation (`lib/data/repositories/auth_repository_impl.dart`)
 
 #### Sprint 2.3: Presentation Layer
-- [ ] Auth state provider
-- [ ] Auth screen UI
-- [ ] Social sign-in buttons
-- [ ] Splash screen with auth check
-- [ ] Onboarding flow
+- [x] Auth state provider (`lib/presentation/providers/auth_provider.dart`)
+- [x] Auth screen UI (`lib/presentation/screens/auth/auth_screen.dart`)
+- [x] Social sign-in buttons (`lib/presentation/screens/auth/widgets/social_sign_in_button.dart`)
+- [x] Email sign-in form (`lib/presentation/screens/auth/widgets/email_sign_in_form.dart`)
+- [x] Splash screen with auth check (`lib/presentation/screens/splash/splash_screen.dart`)
+- [x] Onboarding screen (placeholder) (`lib/presentation/screens/onboarding/onboarding_screen.dart`)
 
 #### Phase 2 Completion Criteria
-- [ ] Can sign in with Google
-- [ ] Can sign in with Apple
-- [ ] Can sign in with Email
-- [ ] User document created in Firestore
-- [ ] Auth state persists across app restarts
-- [ ] Protected routes redirect unauthenticated users
+- [x] Can sign in with Google
+- [ ] Can sign in with Apple (DEFERRED - needs Apple Developer account $99/year)
+- [x] Can sign in with Email/Password
+- [x] Can sign up with Email/Password
+- [x] User document created in Firestore
+- [x] Auth state persists across app restarts
+- [x] Protected routes redirect unauthenticated users
+- [x] Sign out working
+- [x] All tests pass
+- [x] CI pipeline passes
+
+#### Phase 2 Bug Fixes (commit a205b50)
+- [x] Fixed router Stack Overflow (changed ref.watch to ref.read in redirect)
+- [x] Fixed auth screen infinite loop (removed clearError from listener)
+- [x] Simplified splash screen (removed context lookups during init)
+- [x] Added sign out button to Home screen for testing
+- [x] Removed Apple Sign-In button (deferred)
+- [x] Configured real Firebase credentials
+
+---
+
+### Phase 3: Receipt Scanning (NEXT)
+
+#### Sprint 3.1: Domain Layer
+- [ ] Receipt entity
+- [ ] ReceiptItem entity
+- [ ] Store entity
+- [ ] Money value object
+- [ ] Receipt repository interface
+- [ ] Use cases (scan, get, update, delete, search)
+
+#### Sprint 3.2: Data Layer
+- [ ] Receipt model with JSON serialization
+- [ ] ReceiptItem model
+- [ ] Store model
+- [ ] OCR result model
+- [ ] Receipt local data source
+- [ ] Receipt remote data source
+- [ ] Firebase storage data source
+- [ ] Repository implementation
+
+#### Sprint 3.3: OCR Service
+- [ ] OCR service (Cloud Vision API)
+- [ ] OCR parser
+- [ ] Receipt extractor (Lebanese format)
+- [ ] Image processor
+
+#### Sprint 3.4: Presentation Layer
+- [ ] Scanner provider
+- [ ] Receipts provider
+- [ ] Scanner screen with camera
+- [ ] Receipt review/edit screen
+- [ ] Receipts list screen
+- [ ] Receipt detail screen
+
+#### Phase 3 Completion Criteria
+- [ ] Can capture receipt photo
+- [ ] OCR extracts text from receipt
+- [ ] Can review and edit extracted data
+- [ ] Receipt saved to local database
+- [ ] Receipt synced to Firestore
+- [ ] Receipt image uploaded to Firebase Storage
+- [ ] Can view receipt history
 - [ ] All tests pass
 - [ ] CI pipeline passes
 
