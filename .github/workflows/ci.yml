@@ -79,9 +79,8 @@ jobs:
 
   build-ios:
     name: Build iOS
-    runs-on: macos-latest
+    runs-on: macos-14  # Apple Silicon (arm64) - fixes sqlite3 compatibility
     needs: test
-    continue-on-error: true  # Optional until iOS compatibility issues resolved
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
