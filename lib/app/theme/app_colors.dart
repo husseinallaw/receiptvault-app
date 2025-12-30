@@ -96,4 +96,9 @@ abstract class AppColors {
     Color(0xFF14B8A6),
     Color(0xFF6366F1),
   ];
+
+  // Convenience aliases for common use
+  static const textSecondary = textSecondaryLight;
+  static const border = outlineLight;
+  static const borderDark = outlineDark;
 }
