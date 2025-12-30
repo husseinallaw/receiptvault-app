@@ -1,4 +1,19 @@
 {
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Bash",
+      "Edit",
+      "Write",
+      "Read",
+      "Glob",
+      "Grep",
+      "WebFetch",
+      "WebSearch",
+      "TodoWrite",
+      "Task"
+    ]
+  },
   "project": {
     "name": "ReceiptVault",
     "description": "Smart receipt scanning wallet for Lebanon",
