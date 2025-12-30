@@ -226,13 +226,10 @@ class AppDatabase extends _$AppDatabase {
   }
 
   /// Update sync operation after failure
-  Future<void> updateSyncOperationError(int id, String error) {
-    return (update(syncQueue)..where((q) => q.id.equals(id))).write(
-      SyncQueueCompanion(
-        retryCount: syncQueue.retryCount + const Constant(1),
-        lastError: Value(error),
-        lastAttemptAt: Value(DateTime.now()),
-      ),
+  Future<void> updateSyncOperationError(int id, String error) async {
+    await customStatement(
+      'UPDATE sync_queue SET retry_count = retry_count + 1, last_error = ?, last_attempt_at = ? WHERE id = ?',
+      [error, DateTime.now().millisecondsSinceEpoch, id],
     );
   }
 

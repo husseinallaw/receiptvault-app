@@ -27,8 +27,7 @@ class ServerException extends AppException {
 
 /// Network connectivity exceptions
 class NetworkException extends AppException {
-  const NetworkException([String message = 'No internet connection'])
-      : super(message);
+  const NetworkException([super.message = 'No internet connection']);
 }
 
 /// Local cache/database exceptions
@@ -64,8 +63,7 @@ class ValidationException extends AppException {
 
 /// Permission exceptions
 class PermissionException extends AppException {
-  const PermissionException([String message = 'Permission denied'])
-      : super(message);
+  const PermissionException([super.message = 'Permission denied']);
 }
 
 /// Storage (file operations) exceptions

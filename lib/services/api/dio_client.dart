@@ -8,9 +8,9 @@ import '../../core/di/injection.dart';
 final dioProvider = Provider<Dio>((ref) {
   final dio = Dio(
     BaseOptions(
-      connectTimeout: Duration(milliseconds: AppConstants.apiConnectTimeout),
-      receiveTimeout: Duration(milliseconds: AppConstants.apiReceiveTimeout),
-      sendTimeout: Duration(milliseconds: AppConstants.apiSendTimeout),
+      connectTimeout: const Duration(seconds: AppConstants.apiTimeoutSeconds),
+      receiveTimeout: const Duration(seconds: AppConstants.apiTimeoutSeconds),
+      sendTimeout: const Duration(seconds: AppConstants.apiTimeoutSeconds),
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
