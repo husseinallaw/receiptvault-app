@@ -53,6 +53,9 @@ dependencies:
   # In-App Purchases (TODO: add back when implementing subscriptions)
   # purchases_flutter: ^8.0.0
 
+  # Storage
+  shared_preferences: ^2.2.2
+
   # Utilities
   freezed_annotation: ^2.4.1
   json_annotation: ^4.8.1

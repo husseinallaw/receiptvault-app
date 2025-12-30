@@ -1,144 +1,102 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'app/theme/app_theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+import 'app/router/app_router.dart';
+import 'app/theme/app_theme.dart';
+import 'core/di/injection.dart';
+import 'l10n/generated/app_localizations.dart';
+// import 'firebase_options.dart'; // TODO: Generate with FlutterFire CLI
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // TODO: Initialize Firebase
+  // Set preferred orientations
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  // Initialize SharedPreferences
+  final sharedPreferences = await SharedPreferences.getInstance();
+
+  // TODO: Initialize Firebase when firebase_options.dart is generated
   // await Firebase.initializeApp(
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
 
-  runApp(const ProviderScope(child: ReceiptVaultApp()));
+  runApp(
+    ProviderScope(
+      overrides: [
+        // Override SharedPreferences with initialized instance
+        sharedPreferencesProvider.overrideWithValue(sharedPreferences),
+      ],
+      child: const ReceiptVaultApp(),
+    ),
+  );
 }
 
 /// Main application widget for ReceiptVault
-class ReceiptVaultApp extends ConsumerWidget {
+class ReceiptVaultApp extends ConsumerStatefulWidget {
   const ReceiptVaultApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // TODO: Watch theme provider for dynamic theme switching
-    // final themeMode = ref.watch(themeModeProvider);
+  ConsumerState<ReceiptVaultApp> createState() => _ReceiptVaultAppState();
+}
 
-    return MaterialApp(
+class _ReceiptVaultAppState extends ConsumerState<ReceiptVaultApp> {
+  @override
+  void initState() {
+    super.initState();
+    _initializeApp();
+  }
+
+  Future<void> _initializeApp() async {
+    // Simulate app initialization (loading user preferences, etc.)
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    // Mark app as initialized
+    ref.read(appInitializedProvider.notifier).state = true;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final router = ref.watch(routerProvider);
+    final themeMode = ref.watch(themeModeProvider);
+    final locale = ref.watch(localeProvider);
+
+    return MaterialApp.router(
       title: 'ReceiptVault',
       debugShowCheckedModeBanner: false,
+
+      // Theme
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system,
-      home: const HomeScreen(),
-      // TODO: Add GoRouter for navigation
-      // routerConfig: ref.watch(routerProvider),
-    );
-  }
-}
+      themeMode: _convertThemeMode(themeMode),
 
-/// Temporary home screen placeholder
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+      // Router
+      routerConfig: router,
 
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return Scaffold(
-      appBar: AppBar(title: const Text('ReceiptVault'), centerTitle: true),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.receipt_long,
-              size: 80,
-              color: theme.colorScheme.primary,
-            ),
-            const SizedBox(height: 24),
-            Text('ReceiptVault', style: theme.textTheme.headlineMedium),
-            const SizedBox(height: 8),
-            Text(
-              'Smart Receipt Scanning for Lebanon',
-              style: theme.textTheme.bodyLarge?.copyWith(
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
-              ),
-            ),
-            const SizedBox(height: 48),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32),
-              child: Column(
-                children: [
-                  _FeatureRow(
-                    icon: Icons.camera_alt,
-                    title: 'Scan Receipts',
-                    subtitle: 'OCR-powered receipt scanning',
-                  ),
-                  const SizedBox(height: 16),
-                  _FeatureRow(
-                    icon: Icons.account_balance_wallet,
-                    title: 'Track Spending',
-                    subtitle: 'LBP & USD dual currency',
-                  ),
-                  const SizedBox(height: 16),
-                  _FeatureRow(
-                    icon: Icons.compare_arrows,
-                    title: 'Compare Prices',
-                    subtitle: 'Find the best deals',
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 48),
-            FilledButton.icon(
-              onPressed: () {
-                // TODO: Navigate to onboarding or auth
-              },
-              icon: const Icon(Icons.arrow_forward),
-              label: const Text('Get Started'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _FeatureRow extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String subtitle;
-
-  const _FeatureRow({
-    required this.icon,
-    required this.title,
-    required this.subtitle,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return Row(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: theme.colorScheme.primaryContainer,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Icon(icon, color: theme.colorScheme.primary),
-        ),
-        const SizedBox(width: 16),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(title, style: theme.textTheme.titleMedium),
-              Text(subtitle, style: theme.textTheme.bodySmall),
-            ],
-          ),
-        ),
+      // Localization
+      locale: Locale(locale.code),
+      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
     );
+  }
+
+  ThemeMode _convertThemeMode(ThemeModePreference preference) {
+    return switch (preference) {
+      ThemeModePreference.light => ThemeMode.light,
+      ThemeModePreference.dark => ThemeMode.dark,
+      ThemeModePreference.system => ThemeMode.system,
+    };
   }
 }
