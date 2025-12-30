@@ -82,7 +82,8 @@ functions/node_modules/
 # Generated files
 *.mocks.dart
 *.config.dart
-lib/firebase_options.dart
+# Note: firebase_options.dart is committed with placeholder values
+# Run `flutterfire configure` to generate your actual Firebase config
 
 # Coverage
 coverage/
