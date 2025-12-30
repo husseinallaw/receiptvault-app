@@ -79,7 +79,7 @@ jobs:
 
   build-ios:
     name: Build iOS
-    runs-on: macos-14  # Apple Silicon (arm64) - fixes sqlite3 compatibility
+    runs-on: macos-15  # Xcode 16 + Apple Silicon - required for Firebase 3.x (Swift 6)
     needs: test
     steps:
       - name: Checkout code
