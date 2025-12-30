@@ -101,14 +101,14 @@ jobs:
       - name: Generate localization files
         run: flutter gen-l10n
 
-      - name: Build iOS (simulator, no codesign)
-        run: flutter build ios --simulator --no-codesign
+      - name: Build iOS (release, no codesign)
+        run: flutter build ios --release --no-codesign
 
       - name: Upload iOS build
         uses: actions/upload-artifact@v4
         with:
-          name: ios-simulator-build
-          path: build/ios/iphonesimulator/
+          name: ios-release-build
+          path: build/ios/iphoneos/
 
   functions-test:
     name: Test Cloud Functions
