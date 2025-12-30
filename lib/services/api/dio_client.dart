@@ -66,7 +66,8 @@ class _LoggingInterceptor extends Interceptor {
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     // ignore: avoid_print
-    print('API Response: ${response.statusCode} ${response.requestOptions.uri}');
+    print(
+        'API Response: ${response.statusCode} ${response.requestOptions.uri}');
     handler.next(response);
   }
 

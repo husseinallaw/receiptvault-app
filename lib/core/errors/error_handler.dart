@@ -37,7 +37,8 @@ class ErrorHandler {
     }
 
     if (error is FormatException) {
-      return Failure.validation(message: 'Invalid data format: ${error.message}');
+      return Failure.validation(
+          message: 'Invalid data format: ${error.message}');
     }
 
     return Failure.unknown(
@@ -64,7 +65,8 @@ class ErrorHandler {
         ),
       PermissionException e => Failure.permission(message: e.message),
       StorageException e => Failure.storage(message: e.message),
-      OcrException e => Failure.ocr(message: e.message, confidence: e.confidence),
+      OcrException e =>
+        Failure.ocr(message: e.message, confidence: e.confidence),
       _ => Failure.unknown(message: exception.message),
     };
   }

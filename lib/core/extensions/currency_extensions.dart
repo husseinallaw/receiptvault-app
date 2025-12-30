@@ -50,7 +50,8 @@ extension CurrencyExtensions on num {
   }
 
   /// Format with specified currency
-  String formatCurrency(Currency currency, {bool showSymbol = true, bool compact = false}) {
+  String formatCurrency(Currency currency,
+      {bool showSymbol = true, bool compact = false}) {
     return switch (currency) {
       Currency.lbp => formatLBP(showSymbol: showSymbol, compact: compact),
       Currency.usd => formatUSD(showSymbol: showSymbol, compact: compact),
@@ -93,7 +94,9 @@ extension CurrencyExtensions on num {
     }
 
     // Remove trailing .0
-    formatted = formatted.replaceAll('.00', '').replaceAll(RegExp(r'\.0([KMB])'), r'\1');
+    formatted = formatted
+        .replaceAll('.00', '')
+        .replaceAll(RegExp(r'\.0([KMB])'), r'\1');
     return showSymbol ? '\$$formatted' : formatted;
   }
 

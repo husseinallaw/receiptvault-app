@@ -236,8 +236,8 @@ class AppDatabase extends _$AppDatabase {
   /// Clear all sync queue entries for an entity
   Future<void> clearSyncQueueForEntity(String entityType, String entityId) {
     return (delete(syncQueue)
-          ..where(
-              (q) => q.entityType.equals(entityType) & q.entityId.equals(entityId)))
+          ..where((q) =>
+              q.entityType.equals(entityType) & q.entityId.equals(entityId)))
         .go();
   }
 

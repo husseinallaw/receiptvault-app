@@ -24,7 +24,8 @@ class Receipts extends Table {
   RealColumn get totalAmountUsd => real().withDefault(const Constant(0))();
 
   /// Original currency of receipt (LBP or USD)
-  TextColumn get originalCurrency => text().withDefault(const Constant('LBP'))();
+  TextColumn get originalCurrency =>
+      text().withDefault(const Constant('LBP'))();
 
   /// Category ID
   TextColumn get categoryId => text().nullable()();
