@@ -46,8 +46,9 @@ post_install do |installer|
     target.build_configurations.each do |config|
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
       
-      # Exclude arm64 for simulator on Intel Macs, or x86_64 for Apple Silicon
-      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'i386'
+      # Exclude problematic architectures for simulator
+      # x86_64 has issues with sqlite3 -G flag on newer Xcode
+      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'i386 x86_64'
     end
   end
 end
