@@ -26,14 +26,15 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
 
     // Listen for auth state changes
     ref.listen<AuthState>(authProvider, (previous, next) {
-      if (next.hasError && next.errorMessage != null) {
+      // Only show error if it's a new error (not present in previous state)
+      if (next.hasError && next.errorMessage != null &&
+          previous?.errorMessage != next.errorMessage) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(next.errorMessage!),
             backgroundColor: AppColors.error,
           ),
         );
-        ref.read(authProvider.notifier).clearError();
       }
 
       if (next.isAuthenticated) {
@@ -124,20 +125,13 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
   Widget _buildSocialButtons(AppLocalizations l10n, bool isLoading) {
     return Column(
       children: [
-        // Apple Sign In (iOS first!)
-        SocialSignInButton(
-          provider: SocialProvider.apple,
-          onPressed: isLoading ? null : _handleAppleSignIn,
-          isLoading: isLoading,
-        ),
-        const SizedBox(height: AppSpacing.sm),
-
         // Google Sign In
         SocialSignInButton(
           provider: SocialProvider.google,
           onPressed: isLoading ? null : _handleGoogleSignIn,
           isLoading: isLoading,
         ),
+        // TODO: Add Apple Sign In when Apple Developer account is available
       ],
     );
   }

@@ -57,19 +57,21 @@ class DefaultFirebaseOptions {
   // Run `flutterfire configure` to generate real values
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'YOUR_ANDROID_API_KEY',
-    appId: '1:000000000000:android:0000000000000000000000',
-    messagingSenderId: '000000000000',
-    projectId: 'receipt-vault-app',
-    storageBucket: 'receipt-vault-app.firebasestorage.app',
+    apiKey: 'AIzaSyBO7qRXkc-jC-f-pz0YMCsdBshSqeqSS8M',
+    appId: '1:204775861740:android:b9393433bf150a0967a4c9',
+    messagingSenderId: '204775861740',
+    projectId: 'receiptvault-app',
+    storageBucket: 'receiptvault-app.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'YOUR_IOS_API_KEY',
-    appId: '1:000000000000:ios:0000000000000000000000',
-    messagingSenderId: '000000000000',
-    projectId: 'receipt-vault-app',
-    storageBucket: 'receipt-vault-app.firebasestorage.app',
+    apiKey: 'AIzaSyAEqILupp_8w4CncxCIP7lAlyh2jMqXxGY',
+    appId: '1:204775861740:ios:87572b92408f8c0267a4c9',
+    messagingSenderId: '204775861740',
+    projectId: 'receiptvault-app',
+    storageBucket: 'receiptvault-app.firebasestorage.app',
+    iosClientId: '204775861740-jt19iqv3q684rut1i0t3hva42ce9adh1.apps.googleusercontent.com',
     iosBundleId: 'com.receiptvault.receiptVault',
   );
+
 }

@@ -10,14 +10,26 @@ import '../../presentation/screens/splash/splash_screen.dart';
 import 'routes.dart';
 
 // Placeholder screens - will be replaced with actual implementations
-class _PlaceholderScreen extends StatelessWidget {
+class _PlaceholderScreen extends ConsumerWidget {
   final String title;
   const _PlaceholderScreen(this.title);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(
+        title: Text(title),
+        actions: [
+          if (title == 'Home')
+            IconButton(
+              icon: const Icon(Icons.logout),
+              onPressed: () async {
+                await ref.read(authProvider.notifier).signOut();
+              },
+              tooltip: 'Sign Out',
+            ),
+        ],
+      ),
       body: Center(child: Text('$title - Coming Soon')),
     );
   }
@@ -34,14 +46,17 @@ final isAuthenticatedProvider = Provider<bool>((ref) {
 
 /// GoRouter configuration provider
 final routerProvider = Provider<GoRouter>((ref) {
-  final isAuthenticated = ref.watch(isAuthenticatedProvider);
-  final appInitialized = ref.watch(appInitializedProvider);
+  // Create refresh notifier to listen for state changes
+  final refreshNotifier = _RouterRefreshNotifier(ref);
 
   return GoRouter(
     initialLocation: AppRoutes.splash,
     debugLogDiagnostics: true,
-    refreshListenable: _RouterRefreshNotifier(ref),
+    refreshListenable: refreshNotifier,
     redirect: (context, state) {
+      // Use ref.read inside redirect to get current state without creating dependencies
+      final isAuthenticated = ref.read(isAuthenticatedProvider);
+      final appInitialized = ref.read(appInitializedProvider);
       final currentPath = state.matchedLocation;
 
       // If app not initialized, stay on splash
