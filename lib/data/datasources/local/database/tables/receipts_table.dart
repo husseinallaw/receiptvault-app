@@ -66,7 +66,7 @@ class Receipts extends Table {
   @override
   List<String> get customConstraints => [
         'CHECK(status IN (\'pending\', \'processed\', \'failed\'))',
-        'CHECK(originalCurrency IN (\'LBP\', \'USD\'))',
+        'CHECK(original_currency IN (\'LBP\', \'USD\'))',
       ];
 }
 

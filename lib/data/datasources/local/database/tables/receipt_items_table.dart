@@ -44,7 +44,7 @@ class ReceiptItems extends Table {
   @override
   List<String> get customConstraints => [
         'CHECK(currency IN (\'LBP\', \'USD\'))',
-        'FOREIGN KEY (receiptId) REFERENCES receipts(id) ON DELETE CASCADE',
+        'FOREIGN KEY (receipt_id) REFERENCES receipts(id) ON DELETE CASCADE',
       ];
 }
 

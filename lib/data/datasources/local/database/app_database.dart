@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 
+import '../../../../core/utils/logger.dart';
 import 'tables/receipts_table.dart';
 import 'tables/receipt_items_table.dart';
 import 'tables/budgets_table.dart';
@@ -33,22 +34,32 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase.forTesting(super.e);
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 
   @override
   MigrationStrategy get migration {
     return MigrationStrategy(
       onCreate: (Migrator m) async {
+        Log.i(LogTags.db, 'Creating all tables (fresh install)');
         await m.createAll();
+        Log.i(LogTags.db, 'All tables created successfully');
       },
       onUpgrade: (Migrator m, int from, int to) async {
-        // Handle future migrations here
-        // Example:
-        // if (from < 2) {
-        //   await m.addColumn(receipts, receipts.newColumn);
-        // }
+        Log.i(LogTags.db, 'Upgrading database from version $from to $to');
+        // Migration from version 1 to 2: add originalCurrency column
+        if (from < 2) {
+          Log.i(LogTags.db, 'Migration v1->v2: Adding originalCurrency column...');
+          try {
+            await m.addColumn(receipts, receipts.originalCurrency);
+            Log.i(LogTags.db, 'Column added successfully');
+          } catch (e, stackTrace) {
+            Log.e(LogTags.db, 'Failed to add column', e, stackTrace);
+            rethrow;
+          }
+        }
       },
       beforeOpen: (details) async {
+        Log.i(LogTags.db, 'Opening database v${details.versionNow} (wasCreated: ${details.wasCreated})');
         // Enable foreign keys
         await customStatement('PRAGMA foreign_keys = ON');
       },

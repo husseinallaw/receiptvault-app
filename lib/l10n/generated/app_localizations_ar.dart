@@ -500,4 +500,108 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get syncOffline => 'أنت غير متصل. ستتم مزامنة التغييرات عند الاتصال.';
+
+  @override
+  String get allReceipts => 'جميع الإيصالات';
+
+  @override
+  String get thisMonth => 'هذا الشهر';
+
+  @override
+  String get lastMonth => 'الشهر الماضي';
+
+  @override
+  String get noSearchResults => 'لا توجد نتائج بحث';
+
+  @override
+  String get scanFirstReceipt => 'امسح إيصالك الأول';
+
+  @override
+  String get noReceiptData => 'لا توجد بيانات للإيصال';
+
+  @override
+  String get storeName => 'اسم المتجر';
+
+  @override
+  String get storeNameRequired => 'اسم المتجر مطلوب';
+
+  @override
+  String get totalAmount => 'المبلغ الإجمالي';
+
+  @override
+  String get totalRequired => 'المجموع مطلوب';
+
+  @override
+  String get invalidAmount => 'مبلغ غير صالح';
+
+  @override
+  String get discard => 'تجاهل';
+
+  @override
+  String get saveReceipt => 'حفظ الإيصال';
+
+  @override
+  String get noItemsDetected => 'لم يتم اكتشاف أي عناصر';
+
+  @override
+  String get highConfidence => 'دقة عالية';
+
+  @override
+  String get moderateConfidence => 'يُنصح بالمراجعة';
+
+  @override
+  String get lowConfidence => 'مراجعة يدوية مطلوبة';
+
+  @override
+  String get pleaseReviewData => 'يرجى مراجعة البيانات المستخرجة بعناية';
+
+  @override
+  String get errorLoadingReceipt => 'خطأ في تحميل الإيصال';
+
+  @override
+  String get receiptNotFound => 'الإيصال غير موجود';
+
+  @override
+  String get ocrConfidence => 'دقة القراءة الآلية';
+
+  @override
+  String get syncStatus => 'حالة المزامنة';
+
+  @override
+  String get pendingSync => 'بانتظار المزامنة';
+
+  @override
+  String get synced => 'تمت المزامنة';
+
+  @override
+  String get deleteReceipt => 'حذف الإيصال';
+
+  @override
+  String get deleteReceiptConfirmation =>
+      'هل أنت متأكد من حذف هذا الإيصال؟ لا يمكن التراجع عن هذا الإجراء.';
+
+  @override
+  String get unknownError => 'حدث خطأ غير معروف';
+
+  @override
+  String get cameraPermissionDenied => 'تم رفض إذن الكاميرا';
+
+  @override
+  String get enableCameraPermission =>
+      'يرجى تفعيل إذن الكاميرا في الإعدادات لمسح الإيصالات';
+
+  @override
+  String get receiptSaved => 'تم حفظ الإيصال بنجاح';
+
+  @override
+  String get cameraError => 'حدث خطأ في الكاميرا';
+
+  @override
+  String get pickFromGallery => 'اختر من المعرض';
+
+  @override
+  String get noCameraAvailable => 'لا توجد كاميرا متاحة';
+
+  @override
+  String get processingReceipt => 'جاري معالجة الإيصال...';
 }

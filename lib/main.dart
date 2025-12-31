@@ -8,35 +8,47 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'app/router/app_router.dart';
 import 'app/theme/app_theme.dart';
 import 'core/di/injection.dart';
+import 'core/utils/error_handler.dart';
+import 'core/utils/logger.dart';
 import 'firebase_options.dart';
 import 'l10n/generated/app_localizations.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  // Initialize error handling first (catches all errors)
+  ErrorHandler.runWithErrorHandling(() async {
+    WidgetsFlutterBinding.ensureInitialized();
 
-  // Set preferred orientations
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
+    Log.i(LogTags.app, '=== ReceiptVault Starting ===');
 
-  // Initialize SharedPreferences
-  final sharedPreferences = await SharedPreferences.getInstance();
+    // Set preferred orientations
+    await SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    Log.d(LogTags.app, 'Orientations set');
 
-  // Initialize Firebase
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+    // Initialize SharedPreferences
+    final sharedPreferences = await SharedPreferences.getInstance();
+    Log.d(LogTags.app, 'SharedPreferences initialized');
 
-  runApp(
-    ProviderScope(
-      overrides: [
-        // Override SharedPreferences with initialized instance
-        sharedPreferencesProvider.overrideWithValue(sharedPreferences),
-      ],
-      child: const ReceiptVaultApp(),
-    ),
-  );
+    // Initialize Firebase
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    Log.i(LogTags.app, 'Firebase initialized');
+
+    runApp(
+      ProviderScope(
+        overrides: [
+          // Override SharedPreferences with initialized instance
+          sharedPreferencesProvider.overrideWithValue(sharedPreferences),
+        ],
+        child: const ReceiptVaultApp(),
+      ),
+    );
+
+    Log.i(LogTags.app, '=== ReceiptVault App Started ===');
+  });
 }
 
 /// Main application widget for ReceiptVault

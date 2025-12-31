@@ -1051,6 +1051,210 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You\'re offline. Changes will sync when you\'re back online.'**
   String get syncOffline;
+
+  /// No description provided for @allReceipts.
+  ///
+  /// In en, this message translates to:
+  /// **'All Receipts'**
+  String get allReceipts;
+
+  /// No description provided for @thisMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'This Month'**
+  String get thisMonth;
+
+  /// No description provided for @lastMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Month'**
+  String get lastMonth;
+
+  /// No description provided for @noSearchResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No search results'**
+  String get noSearchResults;
+
+  /// No description provided for @scanFirstReceipt.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan your first receipt'**
+  String get scanFirstReceipt;
+
+  /// No description provided for @noReceiptData.
+  ///
+  /// In en, this message translates to:
+  /// **'No receipt data available'**
+  String get noReceiptData;
+
+  /// No description provided for @storeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Store Name'**
+  String get storeName;
+
+  /// No description provided for @storeNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Store name is required'**
+  String get storeNameRequired;
+
+  /// No description provided for @totalAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Amount'**
+  String get totalAmount;
+
+  /// No description provided for @totalRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Total is required'**
+  String get totalRequired;
+
+  /// No description provided for @invalidAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid amount'**
+  String get invalidAmount;
+
+  /// No description provided for @discard.
+  ///
+  /// In en, this message translates to:
+  /// **'Discard'**
+  String get discard;
+
+  /// No description provided for @saveReceipt.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Receipt'**
+  String get saveReceipt;
+
+  /// No description provided for @noItemsDetected.
+  ///
+  /// In en, this message translates to:
+  /// **'No items detected'**
+  String get noItemsDetected;
+
+  /// No description provided for @highConfidence.
+  ///
+  /// In en, this message translates to:
+  /// **'High Confidence'**
+  String get highConfidence;
+
+  /// No description provided for @moderateConfidence.
+  ///
+  /// In en, this message translates to:
+  /// **'Review Recommended'**
+  String get moderateConfidence;
+
+  /// No description provided for @lowConfidence.
+  ///
+  /// In en, this message translates to:
+  /// **'Manual Review Required'**
+  String get lowConfidence;
+
+  /// No description provided for @pleaseReviewData.
+  ///
+  /// In en, this message translates to:
+  /// **'Please review the extracted data carefully'**
+  String get pleaseReviewData;
+
+  /// No description provided for @errorLoadingReceipt.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading receipt'**
+  String get errorLoadingReceipt;
+
+  /// No description provided for @receiptNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt not found'**
+  String get receiptNotFound;
+
+  /// No description provided for @ocrConfidence.
+  ///
+  /// In en, this message translates to:
+  /// **'OCR Confidence'**
+  String get ocrConfidence;
+
+  /// No description provided for @syncStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Sync Status'**
+  String get syncStatus;
+
+  /// No description provided for @pendingSync.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending Sync'**
+  String get pendingSync;
+
+  /// No description provided for @synced.
+  ///
+  /// In en, this message translates to:
+  /// **'Synced'**
+  String get synced;
+
+  /// No description provided for @deleteReceipt.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Receipt'**
+  String get deleteReceipt;
+
+  /// No description provided for @deleteReceiptConfirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this receipt? This action cannot be undone.'**
+  String get deleteReceiptConfirmation;
+
+  /// No description provided for @unknownError.
+  ///
+  /// In en, this message translates to:
+  /// **'An unknown error occurred'**
+  String get unknownError;
+
+  /// No description provided for @cameraPermissionDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera permission denied'**
+  String get cameraPermissionDenied;
+
+  /// No description provided for @enableCameraPermission.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enable camera permission in settings to scan receipts'**
+  String get enableCameraPermission;
+
+  /// No description provided for @receiptSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt saved successfully'**
+  String get receiptSaved;
+
+  /// No description provided for @cameraError.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera error occurred'**
+  String get cameraError;
+
+  /// No description provided for @pickFromGallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick from Gallery'**
+  String get pickFromGallery;
+
+  /// No description provided for @noCameraAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No camera available'**
+  String get noCameraAvailable;
+
+  /// No description provided for @processingReceipt.
+  ///
+  /// In en, this message translates to:
+  /// **'Processing receipt...'**
+  String get processingReceipt;
 }
 
 class _AppLocalizationsDelegate

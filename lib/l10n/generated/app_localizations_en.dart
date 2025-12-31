@@ -501,4 +501,108 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get syncOffline =>
       'You\'re offline. Changes will sync when you\'re back online.';
+
+  @override
+  String get allReceipts => 'All Receipts';
+
+  @override
+  String get thisMonth => 'This Month';
+
+  @override
+  String get lastMonth => 'Last Month';
+
+  @override
+  String get noSearchResults => 'No search results';
+
+  @override
+  String get scanFirstReceipt => 'Scan your first receipt';
+
+  @override
+  String get noReceiptData => 'No receipt data available';
+
+  @override
+  String get storeName => 'Store Name';
+
+  @override
+  String get storeNameRequired => 'Store name is required';
+
+  @override
+  String get totalAmount => 'Total Amount';
+
+  @override
+  String get totalRequired => 'Total is required';
+
+  @override
+  String get invalidAmount => 'Invalid amount';
+
+  @override
+  String get discard => 'Discard';
+
+  @override
+  String get saveReceipt => 'Save Receipt';
+
+  @override
+  String get noItemsDetected => 'No items detected';
+
+  @override
+  String get highConfidence => 'High Confidence';
+
+  @override
+  String get moderateConfidence => 'Review Recommended';
+
+  @override
+  String get lowConfidence => 'Manual Review Required';
+
+  @override
+  String get pleaseReviewData => 'Please review the extracted data carefully';
+
+  @override
+  String get errorLoadingReceipt => 'Error loading receipt';
+
+  @override
+  String get receiptNotFound => 'Receipt not found';
+
+  @override
+  String get ocrConfidence => 'OCR Confidence';
+
+  @override
+  String get syncStatus => 'Sync Status';
+
+  @override
+  String get pendingSync => 'Pending Sync';
+
+  @override
+  String get synced => 'Synced';
+
+  @override
+  String get deleteReceipt => 'Delete Receipt';
+
+  @override
+  String get deleteReceiptConfirmation =>
+      'Are you sure you want to delete this receipt? This action cannot be undone.';
+
+  @override
+  String get unknownError => 'An unknown error occurred';
+
+  @override
+  String get cameraPermissionDenied => 'Camera permission denied';
+
+  @override
+  String get enableCameraPermission =>
+      'Please enable camera permission in settings to scan receipts';
+
+  @override
+  String get receiptSaved => 'Receipt saved successfully';
+
+  @override
+  String get cameraError => 'Camera error occurred';
+
+  @override
+  String get pickFromGallery => 'Pick from Gallery';
+
+  @override
+  String get noCameraAvailable => 'No camera available';
+
+  @override
+  String get processingReceipt => 'Processing receipt...';
 }

@@ -5,6 +5,10 @@ import 'package:go_router/go_router.dart';
 import '../../presentation/providers/auth_provider.dart';
 import '../../presentation/screens/auth/auth_screen.dart';
 import '../../presentation/screens/onboarding/onboarding_screen.dart';
+import '../../presentation/screens/receipts/receipt_detail_screen.dart';
+import '../../presentation/screens/receipts/receipts_list_screen.dart';
+import '../../presentation/screens/scanner/receipt_review_screen.dart';
+import '../../presentation/screens/scanner/scanner_screen.dart';
 import '../../presentation/screens/shell/shell_screen.dart';
 import '../../presentation/screens/splash/splash_screen.dart';
 import 'routes.dart';
@@ -118,7 +122,7 @@ final routerProvider = Provider<GoRouter>((ref) {
             path: AppRoutes.receipts,
             name: RouteNames.receipts,
             pageBuilder: (context, state) => const NoTransitionPage(
-              child: _PlaceholderScreen('Receipts'),
+              child: ReceiptsListScreen(),
             ),
             routes: [
               GoRoute(
@@ -126,7 +130,7 @@ final routerProvider = Provider<GoRouter>((ref) {
                 name: RouteNames.receiptDetail,
                 builder: (context, state) {
                   final id = state.pathParameters['id']!;
-                  return _PlaceholderScreen('Receipt $id');
+                  return ReceiptDetailScreen(receiptId: id);
                 },
               ),
             ],
@@ -137,14 +141,13 @@ final routerProvider = Provider<GoRouter>((ref) {
             path: AppRoutes.scanner,
             name: RouteNames.scanner,
             pageBuilder: (context, state) => const NoTransitionPage(
-              child: _PlaceholderScreen('Scanner'),
+              child: ScannerScreen(),
             ),
             routes: [
               GoRoute(
                 path: 'review',
                 name: RouteNames.receiptReview,
-                builder: (context, state) =>
-                    const _PlaceholderScreen('Receipt Review'),
+                builder: (context, state) => const ReceiptReviewScreen(),
               ),
             ],
           ),
