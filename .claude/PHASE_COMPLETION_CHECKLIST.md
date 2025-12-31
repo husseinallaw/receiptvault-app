@@ -134,6 +134,15 @@ These checks run automatically on every PR:
 - [x] Removed Apple Sign-In button (deferred)
 - [x] Configured real Firebase credentials
 
+#### CI Pipeline Fixes (commits c99f047, 3eafb77, 17364d3, 978ca6a)
+- [x] Fixed code formatting (dart format)
+- [x] Added GoogleService-Info.plist for iOS builds
+- [x] Added google-services.json for Android builds
+- [x] Changed iOS build to simulator mode (no code signing needed)
+- [x] Added FlutterFire CLI installation for Crashlytics build script
+- [x] Created `scripts/validate.sh` for pre-commit validation
+- [x] Created `.claude/WORKFLOW.md` documenting mandatory steps
+
 ---
 
 ### Phase 3: Receipt Scanning (NEXT)
@@ -221,28 +230,18 @@ These checks run automatically on every PR:
 
 ## Quick Validation Script
 
-Run this before creating a PR:
+Run this before creating a PR or committing:
 
 ```bash
-#!/bin/bash
-set -e
-
-echo "🔧 Generating code..."
-dart run build_runner build --delete-conflicting-outputs
-
-echo "🌍 Generating localization..."
-flutter gen-l10n
-
-echo "🔍 Running analysis..."
-flutter analyze
-
-echo "📝 Checking formatting..."
-dart format --set-exit-if-changed .
-
-echo "🧪 Running tests..."
-flutter test
-
-echo "✅ All validations passed!"
+./scripts/validate.sh
 ```
 
-Save as `scripts/validate.sh` and run with `./scripts/validate.sh`
+This script runs all validation checks:
+1. Dart code formatting
+2. Flutter static analysis
+3. Flutter tests (if test/ exists)
+4. Cloud Functions lint
+5. Cloud Functions build
+6. CI-mode format check
+
+See `.claude/WORKFLOW.md` for the complete mandatory workflow documentation.
