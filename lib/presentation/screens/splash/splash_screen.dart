@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:receipt_vault/app/theme/app_colors.dart';
+import 'package:receipt_vault/core/utils/logger.dart';
+import 'package:receipt_vault/presentation/providers/auth_provider.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
@@ -39,18 +41,48 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
     );
 
     _controller.forward();
-    _navigateAfterDelay();
+    _navigateWhenReady();
   }
 
-  Future<void> _navigateAfterDelay() async {
-    // Wait for animation to complete
-    await Future.delayed(const Duration(milliseconds: 2000));
+  Future<void> _navigateWhenReady() async {
+    Log.d(LogTags.app, 'Splash: Waiting for auth state...');
+
+    // Wait minimum time for animation
+    await Future.delayed(const Duration(milliseconds: 1500));
 
     if (!mounted) return;
 
-    // Simply navigate to auth - the router's redirect will handle
-    // routing to home if already authenticated
-    context.go('/auth');
+    // Wait for auth state to be determined (not initial)
+    int attempts = 0;
+    const maxAttempts = 20; // 4 seconds max wait
+
+    while (mounted && attempts < maxAttempts) {
+      final authState = ref.read(authProvider);
+      Log.d(LogTags.app, 'Splash: Auth status = ${authState.status}');
+
+      if (authState.status != AuthStatus.initial) {
+        // Auth state determined, navigate based on it
+        if (authState.isAuthenticated) {
+          Log.i(LogTags.app, 'Splash: User authenticated, going to home');
+          context.go('/home');
+        } else {
+          Log.i(LogTags.app, 'Splash: User not authenticated, going to auth');
+          context.go('/auth');
+        }
+        return;
+      }
+
+      // Wait a bit and check again
+      await Future.delayed(const Duration(milliseconds: 200));
+      attempts++;
+    }
+
+    // Timeout - default to auth screen
+    if (mounted) {
+      Log.w(
+          LogTags.app, 'Splash: Auth state timeout, defaulting to auth screen');
+      context.go('/auth');
+    }
   }
 
   @override

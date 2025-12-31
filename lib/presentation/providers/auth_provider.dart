@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:receipt_vault/core/utils/logger.dart';
 import 'package:receipt_vault/core/utils/result.dart';
 import 'package:receipt_vault/data/datasources/local/secure_storage_datasource.dart';
 import 'package:receipt_vault/data/datasources/remote/firebase_auth_datasource.dart';
@@ -83,12 +84,16 @@ class AuthNotifier extends StateNotifier<AuthState> {
   final Ref _ref;
 
   AuthNotifier(this._repository, this._ref) : super(const AuthState()) {
+    Log.d(LogTags.auth, 'AuthNotifier created, starting init...');
     _init();
   }
 
   Future<void> _init() async {
+    Log.d(LogTags.auth, 'Auth init starting...');
+
     // Listen to auth state changes
     _repository.authStateChanges.listen((user) async {
+      Log.d(LogTags.auth, 'Auth state stream: user = ${user?.email ?? "null"}');
       if (user != null) {
         // Load user preferences
         final prefsResult = await _repository.getUserPreferences(user.id);
@@ -100,6 +105,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
           preferences: prefs,
           errorMessage: null,
         );
+        Log.i(LogTags.auth, 'Auth state updated: authenticated');
       } else {
         state = state.copyWith(
           status: AuthStatus.unauthenticated,
@@ -107,33 +113,41 @@ class AuthNotifier extends StateNotifier<AuthState> {
           preferences: null,
           errorMessage: null,
         );
+        Log.i(LogTags.auth, 'Auth state updated: unauthenticated');
       }
     });
 
     // Check current user
+    Log.d(LogTags.auth, 'Checking current user...');
     final result = await _repository.getCurrentUser();
-    result.when(
-      success: (user) async {
-        if (user != null) {
-          final prefsResult = await _repository.getUserPreferences(user.id);
-          final prefs = prefsResult.dataOrNull;
 
-          state = state.copyWith(
-            status: AuthStatus.authenticated,
-            user: user,
-            preferences: prefs,
-          );
-        } else {
-          state = state.copyWith(status: AuthStatus.unauthenticated);
-        }
-      },
-      failure: (failure) {
+    if (result.isSuccess) {
+      final user = result.dataOrNull;
+      Log.d(LogTags.auth, 'getCurrentUser success: ${user?.email ?? "null"}');
+      if (user != null) {
+        final prefsResult = await _repository.getUserPreferences(user.id);
+        final prefs = prefsResult.dataOrNull;
+
         state = state.copyWith(
-          status: AuthStatus.unauthenticated,
-          errorMessage: failure.displayMessage,
+          status: AuthStatus.authenticated,
+          user: user,
+          preferences: prefs,
         );
-      },
-    );
+        Log.i(LogTags.auth, 'User authenticated: ${user.email}');
+      } else {
+        state = state.copyWith(status: AuthStatus.unauthenticated);
+        Log.i(LogTags.auth, 'No current user, unauthenticated');
+      }
+    } else {
+      final failure = result.failureOrNull;
+      Log.e(LogTags.auth, 'getCurrentUser failed: ${failure?.displayMessage}');
+      state = state.copyWith(
+        status: AuthStatus.unauthenticated,
+        errorMessage: failure?.displayMessage,
+      );
+    }
+
+    Log.d(LogTags.auth, 'Auth init completed, status = ${state.status}');
   }
 
   /// Sign in with email and password
